@@ -1,0 +1,7 @@
+services:
+  app:
+    build: .
+    command: make test
+    volumes:
+      - .:/app
+    working_dir: /app
