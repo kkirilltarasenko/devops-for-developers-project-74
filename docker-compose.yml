@@ -3,5 +3,5 @@ services:
     build: .
     command: make test
     volumes:
-      - .:/app
+      - ./app:/app
     working_dir: /app
