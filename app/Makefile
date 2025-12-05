@@ -31,7 +31,8 @@ lint-fix:
 	npx eslint --fix .
 
 test:
+	NODE_ENV=test ./node_modules/.bin/sequelize-cli db:migrate
 	NODE_ENV=test npm test -s
 
 ci:
-	docker-compose -f ../docker-compose.yml up --abort-on-container-exit
+	docker compose -f ../docker-compose.yml up --abort-on-container-exit

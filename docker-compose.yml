@@ -5,6 +5,4 @@ services:
       dockerfile: Dockerfile.production
     command: make test
     image: valrythx/devops-for-developers-project-74:latest
-    volumes:
-      - ./app:/app
     working_dir: /app
