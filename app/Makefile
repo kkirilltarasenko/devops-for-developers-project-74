@@ -31,6 +31,7 @@ lint-fix:
 	npx eslint --fix .
 
 test:
+	NODE_ENV=test npx sequelize-cli db:migrate
 	NODE_ENV=test npm test -s
 
 ci:
