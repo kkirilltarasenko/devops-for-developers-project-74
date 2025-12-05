@@ -1,5 +1,7 @@
 services:
   app:
+    environment:
+      - NODE_ENV=development
     build:
       context: .
       dockerfile: Dockerfile
@@ -8,3 +10,13 @@ services:
       - "8080:8080"
     volumes:
       - ./app:/app
+
+  caddy:
+    image: caddy:latest
+    volumes:
+      - ./services/caddy/Caddyfile:/etc/caddy/Caddyfile
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - app
