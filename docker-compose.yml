@@ -17,6 +17,7 @@ services:
       dockerfile: Dockerfile.production
     command: make test
     image: valrythx/devops-for-developers-project-74:latest
+    platform: linux/amd64
     working_dir: /app
     environment:
       DATABASE_USERNAME: ${DATABASE_USERNAME}
@@ -26,5 +27,4 @@ services:
       DATABASE_HOST: "db"
 
     depends_on:
-      db:
-        condition: service_healthy
+      - db
