@@ -9,7 +9,7 @@
 [Install Docker Engine](https://docs.docker.com/engine/install/)
 
 ## Docker образ
-https://hub.docker.com/repository/docker/valrythx/js-fastify-blog
+https://hub.docker.com/repository/docker/valrythx/devops-for-developers-project-74
 
 ## Как запустить приложение
 1. Клонируйте репозиторий:
