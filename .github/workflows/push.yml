@@ -4,24 +4,16 @@ on:
   push:
     branches: ["**"]
 
+env:
+  DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+  DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+  DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+  DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+  DATABASE_HOST: db
+
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    services:
-      db:
-        image: postgres:15
-        env:
-          POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
-          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          POSTGRES_DB: ${{ secrets.DATABASE_NAME }}
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd "pg_isready -U ${{ secrets.DATABASE_USERNAME }}"
-          --health-interval 5s
-          --health-timeout 5s
-          --health-retries 5
 
     steps:
       - uses: actions/checkout@v4
