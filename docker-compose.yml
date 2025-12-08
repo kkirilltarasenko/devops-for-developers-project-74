@@ -12,9 +12,6 @@ services:
       retries: 5
 
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile.production
     command: make test
     image: valrythx/devops-for-developers-project-74:latest
     working_dir: /app
