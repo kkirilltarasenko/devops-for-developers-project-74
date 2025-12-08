@@ -5,6 +5,8 @@ services:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - db_data:/var/lib/sqlite/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
@@ -28,3 +30,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+volumes:
+  db_data:
