@@ -12,8 +12,11 @@ services:
       retries: 5
 
   app:
-    command: make test
+    build:
+      context: .
+      dockerfile: Dockerfile.production
     image: valrythx/devops-for-developers-project-74:latest
+    command: make test
     working_dir: /app
     environment:
       DATABASE_USERNAME: ${DATABASE_USERNAME}
