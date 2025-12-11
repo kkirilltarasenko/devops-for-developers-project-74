@@ -1,27 +1,29 @@
-setup:
-	docker compose run --rm app make setup
+COMPOSE=docker compose
+FILE=-f docker-compose.yml
 
-up-exist:
-	docker compose up --abort-on-container-exist
+compose-setup:
+	$(COMPOSE) run --rm app make setup
 
-start:
-	docker compose up
+compose-up-exist:
+	$(COMPOSE) up --abort-on-container-exist
 
-down:
-	docker compose down
+compose-start:
+	$(COMPOSE) up
 
-ci:
-	docker compose -f docker-compose.yml up --abort-on-container-exit
+compose-down:
+	$(COMPOSE) down
 
-test:
-	docker compose -f docker-compose.yml up --abort-on-container-exit
+compose-ci:
+	$(COMPOSE) ${FILE} up --abort-on-container-exit
 
+compose-test:
+	$(COMPOSE) ${FILE} up --abort-on-container-exit --exit-code-from app
 
-ci-build:
-	docker compose -f docker-compose.yml build app
+compose-ci-build:
+	$(COMPOSE) ${FILE} build app
 
-push:
-	docker compose -f docker-compose.yml push app
+compose-push:
+	$(COMPOSE) ${FILE} push app
 
 up-development:
 	docker run -p 8080:8080 -e NODE_ENV=development valrythx/devops-for-developers-project-74 make dev

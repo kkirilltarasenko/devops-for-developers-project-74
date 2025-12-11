@@ -20,10 +20,10 @@ jobs:
       - uses: actions/setup-node@v4
 
       - name: Build Docker image
-        run: make ci-build
+        run: make compose-ci-build
 
       - name: Run CI tests
-        run: make ci
+        run: make compose-ci
 
       - name: Docker Login
         uses: docker/login-action@v2
@@ -32,4 +32,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image
-        run: make push
+        run: make compose-push
